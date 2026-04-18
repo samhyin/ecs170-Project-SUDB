@@ -126,12 +126,15 @@ The stage 1 scripts use relative paths like `../../data/stage_1_data/`, so run t
 
 ```powershell
 New-Item -ItemType Directory -Force result\stage_1_result
+$env:PYTHONPATH = (Get-Location).Path
 cd script\stage_1_script
 python script_decision_tree.py
 python script_svm.py
 python script_mlp.py
 python script_load_result.py
 ```
+
+On macOS/Linux, use `export PYTHONPATH="$(pwd)"` from the project root before changing into `script/stage_1_script`.
 
 Expected behavior:
 
