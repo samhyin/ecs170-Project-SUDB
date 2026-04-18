@@ -1,0 +1,39 @@
+# ECS 170 SUDB shared Python packages
+#
+# This file is intentionally platform-neutral. It does not pin PyTorch because
+# the correct torch/torchvision/torchaudio build depends on each teammate's OS
+# and hardware:
+#   - Windows/Linux with NVIDIA GPU: install a CUDA build from PyTorch.
+#   - macOS Apple silicon: install the regular macOS build and use MPS if available.
+#   - Windows/Linux without a supported GPU: install the CPU build.
+#   - AMD GPU: check current ROCm support for the teammate's OS and GPU.
+#
+# Install PyTorch separately first or after this file, following README.md.
+# These ranges are loose on purpose so teammates are not forced into one
+# machine-specific build.
+
+numpy>=2.0
+scipy>=1.14
+scikit-learn>=1.6
+matplotlib>=3.8
+pandas>=2.2
+pillow>=10.0
+networkx>=3.2
+seaborn>=0.13
+tqdm>=4.66
+
+# Optional for Stage 5 if the team decides to use PyTorch Geometric instead of
+# writing the GCN directly with torch/scipy/networkx. Coordinate before enabling.
+# torch-geometric>=2.6
+
+# Optional for Stage 4 if the team wants NLP utilities beyond simple Python
+# tokenization. NLTK may also require downloading tokenizer data.
+# nltk>=3.9
+
+# Optional for Stage 3 if the image dataset requires computer vision operations
+# beyond torchvision/Pillow loading and transforms.
+# opencv-python>=4.10
+
+# Not recommended by default: torchtext availability and compatibility can lag
+# behind current PyTorch/Python versions. Use custom tokenization or NLTK unless
+# a future instructor template specifically requires torchtext.
