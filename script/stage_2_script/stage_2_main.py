@@ -1,16 +1,20 @@
 from Dataset_Loader import Dataset_Loader
 from Method_MLP import Method_MLP
-from Evaluate_Accuracy import Evaluate_Accuracy # 刚才改名的那个
+from Evaluate_Accuracy import Evaluate_Accuracy
+import os
+
+current_dir = os.path.dirname(os.path.abspath(__file__))
+data_dir = os.path.join(current_dir, '..', '..', 'data', 'stage_2_data')
 
 # 加载训练集
 train_loader = Dataset_Loader()
-train_loader.dataset_source_folder_path = 'D:\Document\Program\ECS170_Spring_2026_Source_Code_Template\data\stage_2_data' # 你的路径
+train_loader.dataset_source_folder_path = data_dir + os.sep
 train_loader.dataset_source_file_name = 'train.csv'
 train_data = train_loader.load()
 
 # 加载测试集
 test_loader = Dataset_Loader()
-test_loader.dataset_source_folder_path = 'D:\Document\Program\ECS170_Spring_2026_Source_Code_Template\data\stage_2_data'
+test_loader.dataset_source_folder_path = data_dir + os.sep
 test_loader.dataset_source_file_name = 'test.csv'
 test_data = test_loader.load()
 
