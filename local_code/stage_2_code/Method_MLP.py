@@ -16,7 +16,7 @@ import matplotlib.pyplot as plt
 class Method_MLP(method, nn.Module):
     data = None
     # it defines the max rounds to train the model
-    max_epoch = 500
+    max_epoch = 300
     # it defines the learning rate for gradient descent based optimizer for model learning
     learning_rate = 1e-3
     loss_history = []
