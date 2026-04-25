@@ -306,7 +306,7 @@ git diff
 Stage and commit only your files:
 
 ```bash
-git add local_code/stage_2_code script/stage_2_script README.md
+git add code/stage_2_code script/stage_2_script README.md
 git commit -m "Implement stage 2 MLP classifier"
 ```
 
