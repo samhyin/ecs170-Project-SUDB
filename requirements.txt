@@ -37,3 +37,5 @@ tqdm>=4.66
 # Not recommended by default: torchtext availability and compatibility can lag
 # behind current PyTorch/Python versions. Use custom tokenization or NLTK unless
 # a future instructor template specifically requires torchtext.
+
+torch

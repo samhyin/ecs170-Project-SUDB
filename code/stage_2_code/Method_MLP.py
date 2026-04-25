@@ -4,24 +4,27 @@ import torch
 from torch import nn
 import numpy as np
 from sklearn.metrics import precision_score, recall_score, f1_score
-
+import matplotlib.pyplot as plt
 
 class Method_MLP(method, nn.Module):
     data = None
-    max_epoch = 100
+    max_epoch = 200
     learning_rate = 1e-3
 
     def __init__(self, mName, mDescription):
         method.__init__(self, mName, mDescription)
         nn.Module.__init__(self)
 
-        self.fc_layer_1 = nn.Linear(784, 128)
+        self.fc_layer_1 = nn.Linear(784, 256)
         self.activation_func_1 = nn.ReLU()
 
-        self.fc_layer_2 = nn.Linear(128, 64)
+        self.fc_layer_2 = nn.Linear(256, 128)
         self.activation_func_2 = nn.ReLU()
 
-        self.fc_layer_3 = nn.Linear(64, 10)
+        self.fc_layer_3 = nn.Linear(128, 10)
+
+        self.epoch_history = []
+        self.loss_history = []
 
     def forward(self, x):
         h1 = self.activation_func_1(self.fc_layer_1(x))
@@ -30,11 +33,14 @@ class Method_MLP(method, nn.Module):
         return y_pred
 
     def train(self, X, y):
+        self.epoch_history = []
+        self.loss_history = []
+
         optimizer = torch.optim.Adam(self.parameters(), lr=self.learning_rate)
         loss_function = nn.CrossEntropyLoss()
         accuracy_evaluator = Evaluate_Accuracy('training evaluator', '')
 
-        X_tensor = torch.FloatTensor(np.array(X))
+        X_tensor = torch.FloatTensor(np.array(X)) / 255.0
         y_true = torch.LongTensor(np.array(y))
 
         for epoch in range(self.max_epoch):
@@ -45,6 +51,9 @@ class Method_MLP(method, nn.Module):
             train_loss.backward()
             optimizer.step()
 
+            self.epoch_history.append(epoch + 1)
+            self.loss_history.append(train_loss.item())
+
             if epoch % 10 == 0:
                 accuracy_evaluator.data = {
                     'true_y': y_true,
@@ -54,9 +63,18 @@ class Method_MLP(method, nn.Module):
                       'Accuracy:', accuracy_evaluator.evaluate(),
                       'Loss:', train_loss.item())
 
+        plt.figure(figsize=(8, 5))
+        plt.plot(self.epoch_history, self.loss_history)
+        plt.xlabel('Epoch')
+        plt.ylabel('Training Loss')
+        plt.title('Training Convergence Plot')
+        plt.grid(True)
+        plt.savefig('training_convergence.png', dpi=300, bbox_inches='tight')
+        plt.show()
+
     def test(self, X):
         with torch.no_grad():
-            X_tensor = torch.FloatTensor(np.array(X))
+            X_tensor = torch.FloatTensor(np.array(X)) / 255.0
             y_pred = self.forward(X_tensor)
             return y_pred.max(1)[1]
 
