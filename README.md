@@ -14,14 +14,15 @@ Only the stage 1 starter code is implemented right now. The `stage_2_code`, `sta
 
 ## Repository Layout
 
-- `.gitignore`: ignores IDE files, `.DS_Store`, `data/`, `result/`, and Python cache folders.
+- `.gitignore`: ignores IDE files, `.DS_Store`, and Python cache folders.
 - `README.md`: project guide and team workflow.
-- `data/stage_1_data/`: local toy data for stage 1. This folder is ignored by git, so teammates may need to download or copy data locally.
+- `data/stage_1_data/`: tracked toy data for stage 1.
+- `data/stage_2_data/` through `data/stage_5_data/`: tracked folder structure for later stages. The folders stay in git with `.gitkeep`, but the large downloaded dataset files inside them are ignored.
 - `local_code/base_class/`: abstract base classes for datasets, methods, results, settings, and evaluators.
 - `local_code/stage_1_code/`: working examples for dataset loading, decision tree, SVM, MLP, result saving/loading, train-test split, k-fold CV, and accuracy evaluation.
 - `local_code/stage_2_code/` through `local_code/stage_5_code/`: empty stage folders where future implementations should go.
 - `script/stage_1_script/`: runnable stage 1 scripts.
-- `result/stage_1_result/`: local saved prediction results. This folder is ignored by git.
+- `result/stage_1_result/`: tracked sample prediction results and the place to keep later stage outputs.
 
 ## Environment Setup
 
@@ -143,24 +144,25 @@ Expected behavior:
 - Prediction results are saved as pickle files under `result/stage_1_result/`.
 - `script_load_result.py` loads saved SVM prediction results. It currently tries to load folds `1`, `2`, `3`, and `None`; if `SVM_prediction_result_None` does not exist, comment out `None` in that script or run the train-test-split version of the SVM script first.
 
-If a script cannot find the data or result folder, create the local folder or download/copy the instructor-provided files. Because `data/` and `result/` are ignored by git, these files will not automatically appear after cloning the GitHub repo.
+If a script cannot find the data or result folder, pull the latest branch changes first or create the expected folder if your branch has not added it yet. The team now tracks `result/` and the `data/` folder structure in git, while large downloaded datasets for later stages stay local and are ignored.
 
 ## How To Finish The Project
 
 Use the stage 1 code as the pattern for every future stage:
 
 1. Download the instructor-provided dataset and report template for the stage.
-2. Put raw datasets under `data/stage_N_data/` locally unless the instructor specifically expects them in the repo.
+2. Put raw datasets under `data/stage_N_data/` and keep the folder names clean so every teammate uses the same paths. For the large later-stage datasets, commit the folder structure only and keep the downloaded dataset files local.
 3. Copy the useful stage 1 template files into `local_code/stage_N_code/`.
 4. Update imports from `local_code.stage_1_code...` to `local_code.stage_N_code...`.
-5. Write a dataset loader that matches the new dataset format.
-6. Write or adapt the model class in a `Method_*.py` file.
-7. Write the setting class that loads data, trains the model, tests it, saves results, and evaluates metrics.
-8. Add evaluation classes for every metric required by the report.
-9. Add a runnable script under `script/stage_N_script/`.
-10. Save results, plots, and notes needed for the report.
-11. Run the script from its script folder and confirm paths work from a clean checkout.
-12. Write the stage report using the instructor template. Keep each report at or under 5 pages.
+5. When moving from one stage to the next, migrate the previous stage folder structure forward first. Keep the same code/script filenames unless a new file is truly necessary for the new stage.
+6. Write a dataset loader that matches the new dataset format.
+7. Write or adapt the model class in a `Method_*.py` file.
+8. Write the setting class that loads data, trains the model, tests it, saves results, and evaluates metrics.
+9. Add evaluation classes for every metric required by the report.
+10. Add a runnable script under `script/stage_N_script/`.
+11. Save results, plots, and notes needed for the report.
+12. Run the script from its script folder and confirm paths work from a clean checkout.
+13. Write the stage report using the instructor template. Keep each report at or under 5 pages.
 
 Keep each stage self-contained. Do not edit stage 1 code for later-stage experiments unless the change is a shared bug fix.
 
@@ -184,10 +186,30 @@ Suggested files:
 
 - `local_code/stage_2_code/Dataset_Loader.py`
 - `local_code/stage_2_code/Method_MLP.py`
-- `local_code/stage_2_code/Evaluate_Classification.py`
+- `local_code/stage_2_code/Evaluate_Accuracy.py`
 - `local_code/stage_2_code/Result_Saver.py`
+- `local_code/stage_2_code/Result_Loader.py`
 - `local_code/stage_2_code/Setting_Train_Test.py`
 - `script/stage_2_script/script_mlp.py`
+- `script/stage_2_script/script_load_result.py`
+
+Running stage 2:
+
+```powershell
+python script\stage_2_script\script_mlp.py
+```
+
+How to see stage 2 results:
+
+- Watch the console output for accuracy, macro precision, macro recall, and macro F1.
+- Open `result/stage_2_result/stage_2_loss_curve.png` to see the convergence curve.
+- Run the saved-result loader:
+
+```powershell
+python script\stage_2_script\script_load_result.py
+```
+
+- Inspect the saved prediction file at `result/stage_2_result/MLP_prediction_result_None`.
 
 ## Stage 3 Plan: CNN Image Classification
 
@@ -306,7 +328,7 @@ git diff
 Stage and commit only your files:
 
 ```bash
-git add local_code/stage_2_code script/stage_2_script README.md
+git add local_code/stage_2_code script/stage_2_script result/stage_2_result README.md .gitignore data/stage_2_data/.gitkeep
 git commit -m "Implement stage 2 MLP classifier"
 ```
 
@@ -350,6 +372,9 @@ Commit:
 
 - Source code under `local_code/`.
 - Runnable scripts under `script/`.
+- Small shared data files that belong in the repo, such as the stage 1 toy dataset.
+- Stage data folder placeholders such as `data/stage_2_data/.gitkeep`.
+- Result outputs, plots, and evaluation artifacts under `result/` when they are part of the current stage work.
 - README or documentation updates.
 - Small report files, notes, or generated figures only if the team wants them in GitHub.
 - Updates to `requirements.txt` whenever the team adds or changes a package.
@@ -359,10 +384,12 @@ Do not commit:
 - `.venv/` or local Python environments.
 - `__pycache__/` folders.
 - `.DS_Store`.
-- Large raw datasets unless the instructor explicitly wants them in the repo.
+- Large downloaded datasets under `data/stage_2_data/`, `data/stage_3_data/`, `data/stage_4_data/`, and `data/stage_5_data/`.
 - Large result files, checkpoints, or model weights unless the team agrees they are required.
+- Duplicate unzip junk such as `__MACOSX` folders.
+- Redundant zip archives if the extracted dataset folder is already the shared team source of truth.
 
-The current `.gitignore` already ignores `data/` and `result/`, so dataset and result files are local by default.
+The current workflow tracks `result/` and the `data/` directory layout, but not the large later-stage dataset payloads. Pull before running so the expected folders exist, then download/extract the instructor datasets into those same local paths.
 
 ## Pull Request Checklist
 
@@ -376,7 +403,8 @@ Before asking teammates to review:
 - Learning curves are generated when required.
 - Report notes include the exact hyperparameters and final scores.
 - Your shared packages satisfy `requirements.txt`, and your pull request explains which PyTorch build you used if it differs from another teammate's.
-- `git status` does not show accidental files like cache folders, raw data, or IDE metadata.
+- If your branch changes `data/` or `result/`, the folder names stay clean and do not reintroduce nested unzip folders or `__MACOSX` junk.
+- `git status` does not show accidental files like cache folders, ignored raw dataset payloads, or IDE metadata.
 
 ## Stage Definition Of Done
 

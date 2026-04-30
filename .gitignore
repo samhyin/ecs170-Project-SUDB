@@ -1,5 +1,13 @@
 .idea/
 .DS_Store
-data/
-result/
 __pycache__/
+
+# Keep dataset folder structure, but do not track large downloaded datasets.
+data/stage_2_data/*
+!data/stage_2_data/.gitkeep
+data/stage_3_data/*
+!data/stage_3_data/.gitkeep
+data/stage_4_data/*
+!data/stage_4_data/.gitkeep
+data/stage_5_data/*
+!data/stage_5_data/.gitkeep
