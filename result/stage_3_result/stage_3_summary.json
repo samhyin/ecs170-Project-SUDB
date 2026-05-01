@@ -1,0 +1,179 @@
+[
+  {
+    "dataset": "MNIST",
+    "experiment": "baseline",
+    "description": "three convolution blocks with 32, 64, and 128 channels",
+    "metrics": {
+      "accuracy": 0.9932,
+      "precision_macro": 0.993267941606941,
+      "recall_macro": 0.9930322944468211,
+      "f1_macro": 0.993133039026725,
+      "precision_weighted": 0.9932225560489178,
+      "recall_weighted": 0.9932,
+      "f1_weighted": 0.9931944282963235
+    },
+    "curve_output_path": "C:\\Users\\sam\\OneDrive\\SURENESS\\_AAA_UCD\\ECS_170\\project\\result\\stage_3_result\\mnist_baseline_loss_curve.png",
+    "prediction_output_path": "C:\\Users\\sam\\OneDrive\\SURENESS\\_AAA_UCD\\ECS_170\\project\\result\\stage_3_result\\MNIST_baseline_CNN_prediction_result_None",
+    "epochs": 4,
+    "batch_size": 128,
+    "model_config": {
+      "conv_channels": [
+        32,
+        64,
+        128
+      ],
+      "hidden_dim": 128,
+      "dropout": 0.25,
+      "kernel_size": 3,
+      "learning_rate": 0.001,
+      "weight_decay": 0.0001
+    }
+  },
+  {
+    "dataset": "MNIST",
+    "experiment": "shallow",
+    "description": "ablation with two smaller convolution blocks",
+    "metrics": {
+      "accuracy": 0.9912,
+      "precision_macro": 0.9911904259785491,
+      "recall_macro": 0.9910954531158662,
+      "f1_macro": 0.9911378109583664,
+      "precision_weighted": 0.9912054957258566,
+      "recall_weighted": 0.9912,
+      "f1_weighted": 0.9911975369430213
+    },
+    "curve_output_path": "C:\\Users\\sam\\OneDrive\\SURENESS\\_AAA_UCD\\ECS_170\\project\\result\\stage_3_result\\mnist_shallow_loss_curve.png",
+    "prediction_output_path": "C:\\Users\\sam\\OneDrive\\SURENESS\\_AAA_UCD\\ECS_170\\project\\result\\stage_3_result\\MNIST_shallow_CNN_prediction_result_None",
+    "epochs": 4,
+    "batch_size": 128,
+    "model_config": {
+      "conv_channels": [
+        16,
+        32
+      ],
+      "hidden_dim": 64,
+      "dropout": 0.1,
+      "kernel_size": 3,
+      "learning_rate": 0.001,
+      "weight_decay": 0.0001
+    }
+  },
+  {
+    "dataset": "ORL",
+    "experiment": "baseline",
+    "description": "three convolution blocks with 32, 64, and 128 channels",
+    "metrics": {
+      "accuracy": 0.925,
+      "precision_macro": 0.8875,
+      "recall_macro": 0.925,
+      "f1_macro": 0.9,
+      "precision_weighted": 0.8875,
+      "recall_weighted": 0.925,
+      "f1_weighted": 0.9
+    },
+    "curve_output_path": "C:\\Users\\sam\\OneDrive\\SURENESS\\_AAA_UCD\\ECS_170\\project\\result\\stage_3_result\\orl_baseline_loss_curve.png",
+    "prediction_output_path": "C:\\Users\\sam\\OneDrive\\SURENESS\\_AAA_UCD\\ECS_170\\project\\result\\stage_3_result\\ORL_baseline_CNN_prediction_result_None",
+    "epochs": 30,
+    "batch_size": 32,
+    "model_config": {
+      "conv_channels": [
+        32,
+        64,
+        128
+      ],
+      "hidden_dim": 128,
+      "dropout": 0.25,
+      "kernel_size": 3,
+      "learning_rate": 0.001,
+      "weight_decay": 0.0001
+    }
+  },
+  {
+    "dataset": "ORL",
+    "experiment": "shallow",
+    "description": "ablation with two smaller convolution blocks",
+    "metrics": {
+      "accuracy": 0.9,
+      "precision_macro": 0.85,
+      "recall_macro": 0.9,
+      "f1_macro": 0.8666666666666666,
+      "precision_weighted": 0.85,
+      "recall_weighted": 0.9,
+      "f1_weighted": 0.8666666666666666
+    },
+    "curve_output_path": "C:\\Users\\sam\\OneDrive\\SURENESS\\_AAA_UCD\\ECS_170\\project\\result\\stage_3_result\\orl_shallow_loss_curve.png",
+    "prediction_output_path": "C:\\Users\\sam\\OneDrive\\SURENESS\\_AAA_UCD\\ECS_170\\project\\result\\stage_3_result\\ORL_shallow_CNN_prediction_result_None",
+    "epochs": 30,
+    "batch_size": 32,
+    "model_config": {
+      "conv_channels": [
+        16,
+        32
+      ],
+      "hidden_dim": 64,
+      "dropout": 0.1,
+      "kernel_size": 3,
+      "learning_rate": 0.001,
+      "weight_decay": 0.0001
+    }
+  },
+  {
+    "dataset": "CIFAR",
+    "experiment": "baseline",
+    "description": "three convolution blocks with 32, 64, and 128 channels",
+    "metrics": {
+      "accuracy": 0.7259,
+      "precision_macro": 0.7439294209181568,
+      "recall_macro": 0.7259,
+      "f1_macro": 0.714811808061911,
+      "precision_weighted": 0.743929420918157,
+      "recall_weighted": 0.7259,
+      "f1_weighted": 0.7148118080619109
+    },
+    "curve_output_path": "C:\\Users\\sam\\OneDrive\\SURENESS\\_AAA_UCD\\ECS_170\\project\\result\\stage_3_result\\cifar_baseline_loss_curve.png",
+    "prediction_output_path": "C:\\Users\\sam\\OneDrive\\SURENESS\\_AAA_UCD\\ECS_170\\project\\result\\stage_3_result\\CIFAR_baseline_CNN_prediction_result_None",
+    "epochs": 6,
+    "batch_size": 128,
+    "model_config": {
+      "conv_channels": [
+        32,
+        64,
+        128
+      ],
+      "hidden_dim": 128,
+      "dropout": 0.25,
+      "kernel_size": 3,
+      "learning_rate": 0.001,
+      "weight_decay": 0.0001
+    }
+  },
+  {
+    "dataset": "CIFAR",
+    "experiment": "shallow",
+    "description": "ablation with two smaller convolution blocks",
+    "metrics": {
+      "accuracy": 0.6879,
+      "precision_macro": 0.6897207082139399,
+      "recall_macro": 0.6879,
+      "f1_macro": 0.6803480012921244,
+      "precision_weighted": 0.68972070821394,
+      "recall_weighted": 0.6879,
+      "f1_weighted": 0.6803480012921241
+    },
+    "curve_output_path": "C:\\Users\\sam\\OneDrive\\SURENESS\\_AAA_UCD\\ECS_170\\project\\result\\stage_3_result\\cifar_shallow_loss_curve.png",
+    "prediction_output_path": "C:\\Users\\sam\\OneDrive\\SURENESS\\_AAA_UCD\\ECS_170\\project\\result\\stage_3_result\\CIFAR_shallow_CNN_prediction_result_None",
+    "epochs": 6,
+    "batch_size": 128,
+    "model_config": {
+      "conv_channels": [
+        16,
+        32
+      ],
+      "hidden_dim": 64,
+      "dropout": 0.1,
+      "kernel_size": 3,
+      "learning_rate": 0.001,
+      "weight_decay": 0.0001
+    }
+  }
+]
