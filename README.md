@@ -10,18 +10,22 @@ This repository is for the ECS 170 Spring 2026 quarter-long AI course project. T
 4. Stage 4: text classification and text generation with RNN models.
 5. Stage 5: graph embedding and node classification with GNN/GCN models.
 
-Only the stage 1 starter code is implemented right now. The `stage_2_code`, `stage_3_code`, `stage_4_code`, and `stage_5_code` folders currently contain only package placeholders, so the main work is to copy/adapt the stage 1 template for each later stage.
+Stage 2 and Stage 3 are implemented and complete. Stages 4 and 5 are structurally prepared: each later stage keeps the prior stage code/script files as a starting point, even when a specific later stage will not use every migrated file.
+
+All stages should be launched through `script/stage_N_script/main.py`. Stage-specific helper scripts can exist when useful, but `main.py` is the canonical entrypoint.
 
 ## Repository Layout
 
-- `.gitignore`: ignores IDE files, `.DS_Store`, and Python cache folders.
+- `.gitignore`: ignores IDE files, macOS metadata, Python cache folders, and large local datasets.
 - `README.md`: project guide and team workflow.
 - `data/stage_1_data/`: tracked toy data for stage 1.
 - `data/stage_2_data/` through `data/stage_5_data/`: tracked folder structure for later stages. The folders stay in git with `.gitkeep`, but the large downloaded dataset files inside them are ignored.
+- `data/stage_4_data/`: local Stage 4 payloads should sit directly under `text_classification/` and `text_generation/`.
+- `data/stage_5_data/`: local Stage 5 payloads should sit directly under `cora/`, `citeseer/`, and `pubmed/`.
 - `local_code/base_class/`: abstract base classes for datasets, methods, results, settings, and evaluators.
 - `local_code/stage_1_code/`: working examples for dataset loading, decision tree, SVM, MLP, result saving/loading, train-test split, k-fold CV, and accuracy evaluation.
-- `local_code/stage_2_code/` through `local_code/stage_5_code/`: empty stage folders where future implementations should go.
-- `script/stage_1_script/`: runnable stage 1 scripts.
+- `local_code/stage_2_code/` through `local_code/stage_5_code/`: stage-specific code folders. Later stages inherit the previous stage structure before adding truly new files.
+- `script/stage_1_script/` through `script/stage_5_script/`: stage-specific script folders. Run stages through each folder's `main.py`.
 - `result/stage_1_result/`: tracked sample prediction results and the place to keep later stage outputs.
 
 ## Environment Setup
@@ -121,6 +125,20 @@ The starter project currently imports only Python standard library modules plus 
 
 When a teammate adds code that imports a new external package, update `requirements.txt` in the same pull request.
 
+## Running Stages
+
+Run each stage through its stage script entrypoint:
+
+```powershell
+python script\stage_N_script\main.py
+```
+
+For example, Stage 2 now runs as:
+
+```powershell
+python script\stage_2_script\main.py
+```
+
 ## Running Stage 1
 
 The stage 1 scripts use relative paths like `../../data/stage_1_data/`, so run them from inside `script/stage_1_script`.
@@ -129,6 +147,7 @@ The stage 1 scripts use relative paths like `../../data/stage_1_data/`, so run t
 New-Item -ItemType Directory -Force result\stage_1_result
 $env:PYTHONPATH = (Get-Location).Path
 cd script\stage_1_script
+python main.py
 python script_decision_tree.py
 python script_svm.py
 python script_mlp.py
@@ -159,9 +178,9 @@ Use the stage 1 code as the pattern for every future stage:
 7. Write or adapt the model class in a `Method_*.py` file.
 8. Write the setting class that loads data, trains the model, tests it, saves results, and evaluates metrics.
 9. Add evaluation classes for every metric required by the report.
-10. Add a runnable script under `script/stage_N_script/`.
+10. Add or update runnable scripts under `script/stage_N_script/`.
 11. Save results, plots, and notes needed for the report.
-12. Run the script from its script folder and confirm paths work from a clean checkout.
+12. Route the stage through `script/stage_N_script/main.py` and confirm paths work from a clean checkout.
 13. Write the stage report using the instructor template. Keep each report at or under 5 pages.
 
 Keep each stage self-contained. Do not edit stage 1 code for later-stage experiments unless the change is a shared bug fix.
@@ -196,7 +215,7 @@ Suggested files:
 Running stage 2:
 
 ```powershell
-python script\stage_2_script\script_mlp.py
+python script\stage_2_script\main.py
 ```
 
 How to see stage 2 results:
@@ -214,6 +233,14 @@ python script\stage_2_script\script_load_result.py
 ## Stage 3 Plan: CNN Image Classification
 
 Goal: train CNN models for three image datasets: handwritten digits, human faces, and colored objects.
+
+Run the completed Stage 3 experiment suite with:
+
+```powershell
+C:\Users\sam\anaconda3\envs\battlers\python.exe script\stage_3_script\main.py
+```
+
+The script trains the baseline CNN and shallow ablation on MNIST, ORL, and CIFAR, saves convergence plots and prediction outputs under `result/stage_3_result/`, and writes metrics to `result/stage_3_result/stage_3_summary.json`.
 
 Main tasks:
 
