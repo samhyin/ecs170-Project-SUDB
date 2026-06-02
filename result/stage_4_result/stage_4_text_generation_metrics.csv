@@ -1,0 +1,4 @@
+model,final_train_loss,training_time_seconds,testing_time_seconds,running_time_seconds,generated_text
+RNN,1.372905479181533,7.716269493103027,0.16149663925170898,7.897227048873901,what did the mama pig give her baby pig for the dictionary smiles because there is a mile between a first and a
+LSTM,0.44108113766516616,7.958598852157593,0.006958723068237305,7.98759126663208,what did the fish say when it hit the wall oh dam the other day it was grate favorite that got give bad
+GRU,0.5584978745287696,8.007244110107422,0.009777545928955078,8.036829710006714,what did the green grape say to the barber you calip this a joke joke but at least it is deep a big

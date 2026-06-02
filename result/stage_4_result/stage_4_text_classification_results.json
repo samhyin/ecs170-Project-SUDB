@@ -1,0 +1,242 @@
+[
+  {
+    "model": "RNN",
+    "metrics": {
+      "accuracy": 0.785,
+      "precision": 0.7735544805344391,
+      "recall": 0.80592,
+      "f1": 0.7894056341339184
+    },
+    "confusion_matrix": [
+      [
+        9551,
+        2949
+      ],
+      [
+        2426,
+        10074
+      ]
+    ],
+    "learning_curves": {
+      "train_loss": [
+        0.6887551632988483,
+        0.6069518128014586,
+        0.49311288642456463,
+        0.41011771571148387,
+        0.39063858886813874,
+        0.33512737325695163,
+        0.2921135792380099,
+        0.25921135832129233,
+        0.233131522203193,
+        0.20779256634604748
+      ],
+      "train_acc": [
+        0.53624,
+        0.67288,
+        0.77368,
+        0.8258,
+        0.8386,
+        0.86764,
+        0.88408,
+        0.90084,
+        0.911,
+        0.92304
+      ],
+      "test_acc": [
+        0.6178,
+        0.68368,
+        0.71804,
+        0.7484,
+        0.7708,
+        0.76688,
+        0.7742,
+        0.785,
+        0.74744,
+        0.77032
+      ]
+    },
+    "model_config": {
+      "model_type": "RNN",
+      "hidden_dim": 128,
+      "epochs": 10,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "dropout": 0.5,
+      "bidirectional": true,
+      "num_layers": 1,
+      "grad_clip": 5.0,
+      "device": "cuda",
+      "training_time_seconds": 11.610338926315308,
+      "testing_time_seconds": 3.1197588443756104,
+      "running_time_seconds": 15.968243598937988
+    },
+    "data_metadata": {
+      "train_size": 25000,
+      "test_size": 25000,
+      "max_seq_length": 128,
+      "max_vocab_size": 25000,
+      "embedding_dim": 50,
+      "max_files_per_class": null
+    }
+  },
+  {
+    "model": "LSTM",
+    "metrics": {
+      "accuracy": 0.8266,
+      "precision": 0.8393881453154876,
+      "recall": 0.80776,
+      "f1": 0.8232704146112765
+    },
+    "confusion_matrix": [
+      [
+        10568,
+        1932
+      ],
+      [
+        2403,
+        10097
+      ]
+    ],
+    "learning_curves": {
+      "train_loss": [
+        0.5989131877184524,
+        0.36309222107195793,
+        0.2915332817360568,
+        0.23419577784626686,
+        0.197397769183454,
+        0.16485663976929987,
+        0.14690670157161057,
+        0.12803689469976345,
+        0.1080923702846498,
+        0.09435706820858218
+      ],
+      "train_acc": [
+        0.65108,
+        0.84964,
+        0.8882,
+        0.91416,
+        0.92968,
+        0.9422,
+        0.94692,
+        0.95608,
+        0.9628,
+        0.96788
+      ],
+      "test_acc": [
+        0.8036,
+        0.80556,
+        0.81932,
+        0.8266,
+        0.82608,
+        0.8202,
+        0.81056,
+        0.80568,
+        0.80472,
+        0.80364
+      ]
+    },
+    "model_config": {
+      "model_type": "LSTM",
+      "hidden_dim": 128,
+      "epochs": 10,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "dropout": 0.5,
+      "bidirectional": true,
+      "num_layers": 1,
+      "grad_clip": 5.0,
+      "device": "cuda",
+      "training_time_seconds": 12.540958166122437,
+      "testing_time_seconds": 5.15867018699646,
+      "running_time_seconds": 17.714362859725952
+    },
+    "data_metadata": {
+      "train_size": 25000,
+      "test_size": 25000,
+      "max_seq_length": 128,
+      "max_vocab_size": 25000,
+      "embedding_dim": 50,
+      "max_files_per_class": null
+    }
+  },
+  {
+    "model": "GRU",
+    "metrics": {
+      "accuracy": 0.8302,
+      "precision": 0.8215816127775614,
+      "recall": 0.8436,
+      "f1": 0.8324452338661931
+    },
+    "confusion_matrix": [
+      [
+        10210,
+        2290
+      ],
+      [
+        1955,
+        10545
+      ]
+    ],
+    "learning_curves": {
+      "train_loss": [
+        0.6250744850739188,
+        0.3550946351588535,
+        0.2601943356759103,
+        0.19643721375090387,
+        0.15644644733394503,
+        0.1273668871768524,
+        0.1015203952875055,
+        0.08234293162322524,
+        0.06763348785941214,
+        0.055334478842994896
+      ],
+      "train_acc": [
+        0.623,
+        0.85164,
+        0.89976,
+        0.92608,
+        0.943,
+        0.9546,
+        0.9632,
+        0.9714,
+        0.97572,
+        0.98112
+      ],
+      "test_acc": [
+        0.79736,
+        0.82704,
+        0.80676,
+        0.8302,
+        0.82388,
+        0.82196,
+        0.81096,
+        0.81612,
+        0.81192,
+        0.80956
+      ]
+    },
+    "model_config": {
+      "model_type": "GRU",
+      "hidden_dim": 128,
+      "epochs": 10,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "dropout": 0.5,
+      "bidirectional": true,
+      "num_layers": 1,
+      "grad_clip": 5.0,
+      "device": "cuda",
+      "training_time_seconds": 11.159374952316284,
+      "testing_time_seconds": 3.232863426208496,
+      "running_time_seconds": 14.408560991287231
+    },
+    "data_metadata": {
+      "train_size": 25000,
+      "test_size": 25000,
+      "max_seq_length": 128,
+      "max_vocab_size": 25000,
+      "embedding_dim": 50,
+      "max_files_per_class": null
+    }
+  }
+]

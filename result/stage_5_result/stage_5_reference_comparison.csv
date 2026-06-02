@@ -1,0 +1,16 @@
+dataset,source,experiment,accuracy,accuracy_std,macro_f1,runs,notes
+cora,paper_table_gcn,GCN,0.815,,,100,Kipf and Welling reported semi-supervised GCN accuracy.
+cora,paper_random_split,GCN_random_split,0.801,0.005,,100,Paper appendix random-split result.
+cora,our_reproduction_mean,paper_gcn,0.7635000000000001,0.006363961030678934,0.751163137004066,10,Same paper-style split sizes and hyperparameters; random split generated locally.
+cora,our_test_best,low_dropout,0.79,,0.7823537734245186,1,Best local Stage 5 result selected by test accuracy.
+cora,our_validation_selected,cora_tuned,0.784,,0.7665268403214567,1,Best local Stage 5 result selected by validation accuracy.
+pubmed,paper_table_gcn,GCN,0.79,,,100,Kipf and Welling reported semi-supervised GCN accuracy.
+pubmed,paper_random_split,GCN_random_split,0.789,0.007,,100,Paper appendix random-split result.
+pubmed,our_reproduction_mean,paper_gcn,0.7813000000000001,0.007616502551113025,0.7722930873743971,10,Same paper-style split sizes and hyperparameters; random split generated locally.
+pubmed,our_test_best,paper_gcn_seed8,0.797,,0.7881164340304633,1,Best local Stage 5 result selected by test accuracy.
+pubmed,our_validation_selected,wide,0.795,,0.7876976630315117,1,Best local Stage 5 result selected by validation accuracy.
+citeseer,paper_table_gcn,GCN,0.703,,,100,Kipf and Welling reported semi-supervised GCN accuracy.
+citeseer,paper_random_split,GCN_random_split,0.679,0.005,,100,Paper appendix random-split result.
+citeseer,our_reproduction_mean,paper_gcn,0.6824000000000001,0.0056607812574276505,0.6487824787284574,10,Same paper-style split sizes and hyperparameters; random split generated locally.
+citeseer,our_test_best,wide,0.69,,0.6556462751255779,1,Best local Stage 5 result selected by test accuracy.
+citeseer,our_validation_selected,wide,0.69,,0.6556462751255779,1,Best local Stage 5 result selected by validation accuracy.

@@ -1,0 +1,9 @@
+RNN:
+what did the mama pig give her baby pig for the dictionary smiles because there is a mile between a first and a
+
+LSTM:
+what did the fish say when it hit the wall oh dam the other day it was grate favorite that got give bad
+
+GRU:
+what did the green grape say to the barber you calip this a joke joke but at least it is deep a big
+

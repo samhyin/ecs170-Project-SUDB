@@ -9,6 +9,7 @@ from local_code.base_class.dataset import dataset
 import torch
 import numpy as np
 import scipy.sparse as sp
+import warnings
 
 class Dataset_Loader(dataset):
     data = None
@@ -32,10 +33,14 @@ class Dataset_Loader(dataset):
         indices = torch.from_numpy(np.vstack((sparse_mx.row, sparse_mx.col)).astype(np.int64))
         values = torch.from_numpy(sparse_mx.data)
         shape = torch.Size(sparse_mx.shape)
-        return torch.sparse.FloatTensor(indices, values, shape)
+        with warnings.catch_warnings():
+            warnings.filterwarnings("ignore", message="Sparse invariant checks.*")
+            return torch.sparse_coo_tensor(
+                indices, values, shape, check_invariants=False
+            )
 
     def encode_onehot(self, labels):
-        classes = set(labels)
+        classes = sorted(set(labels))
         classes_dict = {c: np.identity(len(classes))[i, :] for i, c in enumerate(classes)}
         onehot_labels = np.array(list(map(classes_dict.get, labels)), dtype=np.int32)
         return onehot_labels
